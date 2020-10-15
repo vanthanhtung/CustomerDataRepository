@@ -5,7 +5,7 @@
     <title>Customer manager</title>
 </head>
 <body>
-<a href="/create-customer">Create new customer</a>
+<a href="/customers/create">Create new customer</a>
 <h1>Customers</h1>
 <form>
     Search by first name:
@@ -14,6 +14,7 @@
 </form><br/>
 <table border="1">
     <tr>
+        <th>Image</th>
         <th>First name</th>
         <th>Last name</th>
         <th>Province</th>
@@ -23,11 +24,12 @@
 
     <th:block th:each="customer : ${customers}">
         <tr>
+            <td><img th:src="@{'/i/'+ ${customer.getImage()}}" width="100"/></td>
             <td th:text="${customer.firstName}"></td>
             <td th:text="${customer.lastName}"></td>
-            <td><a th:href="@{/view-province/__${customer.province.id}__}" th:text="${customer.province.name}"></a></td>
-            <td><a th:href="@{/edit-customer/__${customer.id}__}">Edit</a></td>
-            <td><a th:href="@{/delete-customer/__${customer.id}__ }">Delete</a></td>
+            <td><a th:href="@{/provinces/view/__${customer.province.id}__}" th:text="${customer.province.name}"></a></td>
+            <td><a th:href="@{/customers/edit/__${customer.id}__}">Edit</a></td>
+            <td><a th:href="@{/customers/delete/__${customer.id}__ }">Delete</a></td>
         </tr>
     </th:block>
 </table>

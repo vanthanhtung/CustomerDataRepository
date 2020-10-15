@@ -6,14 +6,17 @@
 </head>
 <body>
 <h1>View province: <span th:text="${province.name}"></span></h1>
-<a href="/provinces">Province list</a>
+<p><a href="/provinces">Province list</a><a href="/customers">Customer list</a></p>
+
 <table border="1">
     <tr>
+        <th>Image</th>
         <th>First name</th>
         <th>Last name</th>
     </tr>
     <th:block th:each="customer : ${customers}">
         <tr>
+            <td><img th:src="@{'/i/'+ ${customer.getImage()}}" width="100"/></td>
             <td th:text="${customer.firstName}"></td>
             <td th:text="${customer.lastName}"></td>
         </tr>

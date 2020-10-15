@@ -9,6 +9,7 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "province_id")
@@ -23,9 +24,18 @@ public class Customer {
         this.province = province;
     }
 
-    public Customer(String firstName, String lastName, Province province) {
+    public Customer(String firstName, String lastName, String image, Province province) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.image = image;
+        this.province = province;
+    }
+
+    public Customer(Long id, String firstName, String lastName, String image, Province province) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.image = image;
         this.province = province;
     }
 
@@ -64,5 +74,13 @@ public class Customer {
 
     public void setProvince(Province province) {
         this.province = province;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

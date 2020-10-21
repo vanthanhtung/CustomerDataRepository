@@ -20,6 +20,11 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public Iterable<Customer> findAll() {
+        return customerRepository.findAll();
+    }
+
+    @Override
     public Customer findById(Long id) {
         return customerRepository.findOne(id);
     }

@@ -53,7 +53,7 @@ public class RestProvinceController {
     public ResponseEntity<Province>deleteProvince(@PathVariable Long id){
         try{
             provinceService.remove(id);
-            return new ResponseEntity<Province>((Province) provinceService.findById(id),HttpStatus.OK);
+            return new ResponseEntity<>((Province) provinceService.findById(id),HttpStatus.OK);
         }
         catch (Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -10,6 +10,8 @@ import java.util.List;
 public interface CustomerService {
     Page<Customer> findAll(Pageable pageable);
 
+    Iterable<Customer>findAll();
+
     Customer findById(Long id);
 
     void save(Customer customer);

@@ -3,6 +3,7 @@ package controller;
 import model.Customer;
 import model.Province;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -98,5 +99,11 @@ public class ProvinceController {
         modelAndView.addObject("province",province);
         modelAndView.addObject("customers",customers);
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Province findById(@PathVariable Long id){
+        return (Province) provinceService.findById(id);
     }
 }

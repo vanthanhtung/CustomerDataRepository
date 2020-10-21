@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,10 +12,15 @@ public class Province {
     private Long id;
     private String name;
 
-    @OneToMany(targetEntity = Customer.class)
+    @OneToMany(mappedBy = "province",fetch = FetchType.EAGER,targetEntity = Customer.class)
+    @JsonIgnoreProperties(value = {"province"})
     List<Customer> customers;
 
     public Province() {
+    }
+
+    public Province(String name) {
+        this.name = name;
     }
 
     public Province(String name, List<Customer> customers) {

@@ -8,6 +8,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import service.CustomerService;
 import service.ProvinceService;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;

@@ -6,6 +6,7 @@
 </head>
 <body>
 <a href="/provinces/create">Create new province</a>
+<div id="notify"></div>
 <h1>Provinces</h1>
 <table border="1">
     <tr>
@@ -17,7 +18,9 @@
         <tr>
             <td th:text="${province.name}"></td>
             <td><a th:href="@{/provinces/edit/__${province.id}__ }">Edit</a></td>
-            <td><a th:href="@{/provinces/delete/__${province.id}__ }">Delete</a></td>
+            <td>
+                <input hidden id="idProvince" th:value="${province.id}">
+                <a class="deleteClass" onclick="deleteProvince()" href="javascript:;">Delete</a></td>
         </tr>
     </th:block>
 </table>
@@ -26,3 +29,17 @@
 </p>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function deleteProvince(){
+        let idClass = $('#idProvince').val();
+        let a = $(event.target).closest("tr");
+        a.remove();
+        $.ajax({
+            type:"DELETE",
+            url:"/api/provinces/"+ idClass,
+        });
+        event.defaultPrevented;
+    }
+</script>

@@ -57,7 +57,7 @@ public class RestCustomerController {
         }
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE  )
     public ResponseEntity<Customer>deleteCustomer(@PathVariable Long id){
         try{
             customerService.remove(id);

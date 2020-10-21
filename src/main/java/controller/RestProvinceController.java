@@ -49,7 +49,7 @@ public class RestProvinceController {
         }
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public ResponseEntity<Province>deleteProvince(@PathVariable Long id){
         try{
             provinceService.remove(id);
